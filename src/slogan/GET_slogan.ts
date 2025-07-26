@@ -7,10 +7,9 @@ export const GET_slogan = async (_req: Request, res: Response) => {
 		const slogansCollection = await getDBCollection('slogans');
 
 		const [randomSlogan] = await slogansCollection.aggregate([{ $sample: { size: 1 } }]).toArray();
-		const sloganText = randomSlogan?.slogan;
 
-		if (sloganText) {
-			res.json({ slogan: sloganText });
+		if (randomSlogan) {
+			res.json({ slogan: randomSlogan.slogan, director: randomSlogan.director });
 		} else {
 			res.status(404).json({ error: 'No slogans found' });
 		}
