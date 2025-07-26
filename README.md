@@ -9,7 +9,7 @@ This repository contains the backend API for The Directorate. The API provides d
 - Node.js v18.0.0 or newer
 - npm 9+
 - GitHub account (for commiting / forking)
-- MongoDB (for a local database)
+- Docker (optional, for a local database)
 - MongoDB Compass (optional)
 
 ## 🚀 Quick Start
@@ -30,6 +30,11 @@ npm install
 Create a DB with the handy included script:
 ```bash
 npm run setupDB
+```
+
+You can also reset any changes you have made to the db with:
+```bash
+npm run resetDB
 ```
 
 ### 4. Run Locally
