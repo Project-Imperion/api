@@ -6,7 +6,21 @@ import https from 'https';
 
 const app = express();
 
-app.use(cors());
+const allowedOrigins = [
+	'http://localhost:5173',              // Vite default dev port, for development
+	'https://the-directorate.com',
+	'https://www.the-directorate.com'
+];
+
+app.use(cors({
+	origin: (origin, callback) => {
+		if (!origin) return callback(null, true);
+		if (allowedOrigins.includes(origin)) {
+			return callback(null, true);
+		}
+		return callback(new Error('Not allowed by CORS'));
+	}
+}));
 app.use(express.json());
 
 

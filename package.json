@@ -5,6 +5,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js",
+    "setupDB": "ts-node dev/createDevDB.ts",
     "dev": "ts-node src/index.ts"
   },
   "keywords": [],
