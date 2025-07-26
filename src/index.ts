@@ -18,6 +18,8 @@ app.get('/slogan', async (_req, res) => {
 
 
 const isProduction = process.env.NODE_ENV === 'prod';
+const PORT = 3000;
+
 
 if (isProduction) { // use https in prod, http in development
 	const keyPath = '/etc/ssl/privkey.pem';
@@ -28,8 +30,8 @@ if (isProduction) { // use https in prod, http in development
 			key: fs.readFileSync(keyPath),
 			cert: fs.readFileSync(certPath),
 		};
-		https.createServer(options, app).listen(443, () => {
-			console.log('Express API running on HTTPS/443 (production mode)');
+		https.createServer(options, app).listen(PORT, () => {
+			console.log(`Express API running on HTTPS/${PORT} (production mode)`);
 		});
 	} else {
 		console.error('SSL cert or key not found. Exiting.');
@@ -37,7 +39,6 @@ if (isProduction) { // use https in prod, http in development
 	}
 
 } else {
-	const PORT = 3000;
 	app.listen(PORT, () => {
 		console.log(`Express API running on HTTP/${PORT} (development mode)`);
 	});
