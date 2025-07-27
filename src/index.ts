@@ -7,25 +7,26 @@ import https from 'https';
 const app = express();
 
 const allowedOrigins = [
-	'http://localhost:5173',              // Vite default dev port, for development
+	'http://localhost:5173',   // Vite default dev port, for development
 	'https://the-directorate.com',
 	'https://www.the-directorate.com'
 ];
 
-app.use(cors({
-	origin: (origin, callback) => {
-		if (!origin) return callback(null, true);
-		if (allowedOrigins.includes(origin)) {
-			return callback(null, true);
-		}
-		return callback(new Error('Not allowed by CORS'));
+const corsOptionsDelegate = (req: any, callback: Function) => {
+	var corsOptions;
+	if (allowedOrigins.indexOf(req.header('Origin')) !== -1) {
+		corsOptions = { origin: true }
+	} else {
+		corsOptions = { origin: false }
 	}
-}));
+	callback(null, corsOptions)
+}
+
 app.use(express.json());
 
 
 
-app.get('/slogan', async (_req, res) => {
+app.get('/slogan', cors(corsOptionsDelegate), async (_req, res) => {
 	await GET_slogan(_req, res);
 });
 
