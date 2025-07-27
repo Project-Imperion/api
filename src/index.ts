@@ -7,7 +7,7 @@ import https from 'https';
 const app = express();
 
 const allowedOrigins = [
-	'http://localhost:5173/',              // Vite default dev port, for development
+	'http://localhost:5173',              // Vite default dev port, for development
 	'https://the-directorate.com',
 	'https://www.the-directorate.com'
 ];
