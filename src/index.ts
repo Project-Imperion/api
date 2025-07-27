@@ -26,7 +26,7 @@ app.use(express.json());
 
 
 
-app.get('/slogan', cors(corsOptionsDelegate), async (_req, res) => {
+app.get('/slogan', cors(corsOptions), async (_req, res) => {
 	await GET_slogan(_req, res);
 });
 
