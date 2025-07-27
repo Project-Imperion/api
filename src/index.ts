@@ -12,14 +12,14 @@ const allowedOrigins = [
 	'https://www.the-directorate.com'
 ];
 
-const corsOptionsDelegate = (req: any, callback: Function) => {
-	var corsOptions;
-	if (allowedOrigins.indexOf(req.header('Origin')) !== -1) {
-		corsOptions = { origin: true }
-	} else {
-		corsOptions = { origin: false }
+var corsOptions = {
+	origin: function (origin: any, callback: Function) {
+		if (allowedOrigins.indexOf(origin) !== -1) {
+			callback(null, true)
+		} else {
+			callback(new Error('Not allowed by CORS'))
+		}
 	}
-	callback(null, corsOptions)
 }
 
 app.use(express.json());
