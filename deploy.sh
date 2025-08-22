@@ -21,8 +21,8 @@ docker image prune -f
 docker build -t $IMAGE_NAME .
 
 # Run the container, mounting certs
-echo "Running new Docker container on port 3000 with SSL certs mounted..."
-docker run -d -p 3000:1011 \
+echo "Running new Docker container on port 1011 with SSL certs mounted..."
+docker run -d -p 1011:3000 \
     --name $CONTAINER_NAME \
     -v $CERT_PATH:/etc/ssl/fullchain.pem:ro \
     -v $KEY_PATH:/etc/ssl/privkey.pem:ro \
