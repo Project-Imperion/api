@@ -1,4 +1,3 @@
-import { GET_slogan } from './slogan/GET_slogan';
 import cors from 'cors';
 import express from 'express';
 import fs from 'fs';
@@ -25,10 +24,11 @@ var corsOptions = {
 app.use(express.json());
 
 
-
-app.get('/slogan', cors(corsOptions), async (_req, res) => {
-	await GET_slogan(_req, res);
+app.get('/ping', (req, res) => {
+	res.json({ message: 'pong' });
 });
+
+
 
 const PORT = 3000;
 

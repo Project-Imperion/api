@@ -1,9 +1,6 @@
-# The Directorate API
-RESTful backend API for The Directorate project.
+# The Imperion API
+RESTful backend API for Project Imperion.
 Built with Node.js, TypeScript, Express, and MongoDB.
-
-## Overview
-This repository contains the backend API for The Directorate. The API provides data access and endpoints for slogans, user authentication, and any future features required by the website or other services in The Directorate ecosystem.
 
 ## 🛠️ Requirements
 - Node.js v18.0.0 or newer
@@ -15,7 +12,7 @@ This repository contains the backend API for The Directorate. The API provides d
 ## 🚀 Quick Start
 ### 1. Download / Clone the Repository
 ```bash
-git clone https://github.com/The-Directorate/api.git
+git clone https://github.com/Project-Imperion/api.git
 cd api
 ```
 
