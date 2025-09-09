@@ -1,14 +1,17 @@
+import { Request, Response } from 'express-serve-static-core';
+
+import { GET_groupDescription } from './groupDetails.ts/GET_groupDescription';
+import { GET_groups } from './groups/GET_groups';
+import { ParsedQs } from 'qs';
 import cors from 'cors';
 import express from 'express';
-import fs from 'fs';
-import https from 'https';
 
 const app = express();
 
 const allowedOrigins = [
 	'http://localhost:5173',   // Vite default dev port, for development
-	'https://the-directorate.com',
-	'https://www.the-directorate.com'
+	'https://project-imperion.com',
+	'https://www.project-imperion.com'
 ];
 
 var corsOptions = {
@@ -24,8 +27,12 @@ var corsOptions = {
 app.use(express.json());
 
 
-app.get('/ping', (req, res) => {
-	res.json({ message: 'pong' });
+app.get("/groups", cors(corsOptions), async (req, res) => {
+	await GET_groups(req, res);
+});
+
+app.get("/groupDescription", cors(corsOptions), async (req, res) => {
+	await GET_groupDescription(req, res);
 });
 
 
@@ -35,5 +42,4 @@ const PORT = 3000;
 app.listen(PORT, () => {
 	console.log(`Express API running on HTTP/${PORT} (development mode)`);
 });
-
 
