@@ -13,6 +13,7 @@ export const GET_groups = async (_req: Request, res: Response) => {
 					name: 1,
 					shortDesc: 1,
 					bannerUrl: 1,
+					websiteUrl: 1,
 					memberCount: 1,
 					deadCount: 1,
 					discordInvite: 1
