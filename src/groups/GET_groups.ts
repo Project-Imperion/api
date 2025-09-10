@@ -10,11 +10,11 @@ export const GET_groups = async (_req: Request, res: Response) => {
 			{},
 			{
 				projection: {
-					guildId: 1,
 					name: 1,
 					shortDesc: 1,
 					bannerUrl: 1,
 					memberCount: 1,
+					deadCount: 1,
 					discordInvite: 1
 				}
 			}
