@@ -19,7 +19,9 @@ export const GET_groups = async (_req: Request, res: Response) => {
 					discordInvite: 1
 				}
 			}
-		).toArray();
+		)
+			.sort({ memberCount: -1 })
+			.toArray();
 
 		res.json(groups);
 
